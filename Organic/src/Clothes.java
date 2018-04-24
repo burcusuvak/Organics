@@ -4,13 +4,47 @@ public class Clothes implements ProductInterface {
     private String name;
     private double price;
     private String size;
-    private boolean gender;
+    private String gender;
     private String[] tag;
     private ArrayList<String> content;
     private int numOfProduct;
 
+    private ArrayList<String> features;
 
-    public Clothes() {}
+
+    public Clothes(String name, double price, String size, String gender, String[] tag, ArrayList<String> content, int numOfProduct ) {
+
+        this.name = name;
+        this.price = price;
+        this.size = size;
+        this.gender = gender;
+        this.tag = tag;
+        this.content = content;
+        this.numOfProduct = numOfProduct;
+
+        features = new ArrayList<>();
+
+        addFeatures(name,price,size,gender,tag,content,numOfProduct);
+
+    }
+
+    public void addFeatures(String name, double price, String size, String gender, String[] tag, ArrayList<String> content, int numOfProduct){
+
+        features.add(name);
+        features.add( String.valueOf(price) );
+        features.add(size);
+        features.add(gender);
+
+        for ( String next : tag )
+            features.add(next);
+
+        for ( String nextContent : content )
+            features.add(nextContent);
+
+        features.add( String.valueOf(numOfProduct) );
+
+    }
+
 
     @Override
     public String getName() {
@@ -40,11 +74,11 @@ public class Clothes implements ProductInterface {
         this.size = size;
     }
 
-    public boolean isGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
